@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Completo</title>
+    <style>
+        fieldset{
+            margin-bottom: 30px;
+        }
+        div{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="formulario" onsubmit="return validacion()">
+    
+    <fieldset>
+        <legend>Datos personales</legend>
+        <div>
+            <label for="nombre">Nombre <span style="color: red;">*</span></label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="primer_apellido">Primer apellido <span style="color: red;">*</span></label>
+            <input type="text" id="primer_apellido" name="primer_apellido" required>
+
+            <label for="segundo_apellido">Segundo apellido <span style="color: red;">*</span></label>
+            <input type="text" id="segundo_apellido" name="segundo_apellido" required>
+        </div>
+    
+        <div>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Calle o plaza, números y piso">
+        </div>
+
+        <div>
+            <label for="telefono">Teléfono <span style="color: red;">*</span></label>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="123 33 33 33" required>
+        </div>
+
+        <div>
+            <label for="email">E-mail <span style="color: red;">*</span></label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@ejemplo.com" required>
+        </div>
+
+        <div>
+            <label for="contraseña">Contraseña <span style="color: red;">*</span></label>
+            <input type="password" id="contraseña" name="contraseña" required>
+        </div>
+
+        <div>
+            <label>Sexo</label><br>
+            <input type="radio" id="sexo_masculino" name="sexo" value="masculino"><label
+                for="sexo_masculino">Varon</label><br>
+            <input type="radio" id="sexo_femenino" name="sexo" value="femenino"><label
+                for="sexo_femenino">Mujer</label><br>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend>Nivel de estudios e interes</legend>
+        <div>
+            <label>Nivel de estudios</label><br>
+            <input type="radio" id="certificado_escuela" name="nivel_estudios" value="certificado_escuela">
+            <label for="certificado_escuela">Certificado escolar</label><br>
+            <input type="radio" id="graduado_eso" name="nivel_estudios" value="graduado_eso">
+            <label for="graduado_eso">Graduado E.S.O.</label><br>
+            <input type="radio" id="formacion_profesional" name="nivel_estudios" value="formacion_profesional">
+            <label for="formacion_profesional">Bachillerato-Formación Profesional</label><br>
+            <input type="radio" id="diplomado" name="nivel_estudios" value="diplomado">
+            <label for="diplomado">Diplomado</label><br>
+            <input type="radio" id="licenciado" name="nivel_estudios" value="licenciado">
+            <label for="licenciado">Licenciado o doctorado</label><br>
+
+        </div>
+
+        <div>
+            <label>Recibir aticulos sobre lso siguientes temas:</label><br>
+            <input type="checkbox" id="articulos_musica" name="articulos" value="musica"> Música<br>
+            <input type="checkbox" id="articulos_deportes" name="articulos" value="deportes"> Deportes<br>
+            <input type="checkbox" id="articulos_cine" name="articulos" value="cine"> Cine<br>
+            <input type="checkbox" id="articulos_libros" name="articulos" value="libros"> Libros<br>
+            <input type="checkbox" id="articulos_ciencias" name="articulos" value="ciencia"> Ciencia<br>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Datos sobre la revista</legend>
+        <div>
+            <label for="frecuencia">Frecuencia con la que recibe la revista:</label><br>
+            <select id="frecuencia" name="frecuencia">
+                <option value="">Seleccione una opción</option>
+                <option value="semanal">Semanal</option>
+                <option value="mensual">Mensual</option>
+            </select>
+        </div>
+        <p>Puedes mandar tu articulo sobre cualquier tema de los que tratamos.Nosotros lo valoraremos para que pueda ser publicado</p>
+        <div>
+            <p>Mandar articulo: <input type="file" id="archivo" name="archivo"></p>
+        </div>
+
+
+        <div>
+            <label for="comentarios_revista">Si deseas mandar simplemente una opinion o comentario escribelo aqui:</label><br>
+            <textarea id="comentarios_revista" name="comentarios_revista" placeholder="Escribe tu comentario..."></textarea>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Comenzar de nuevo</legend>
+        <div>
+            <button type="reset">Comenzar de nuevo</button>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Enviar</legend>
+        <div>
+            <button type="submit">Enviar por correo</button>
+        </div>
+    </fieldset>
+    </form>
+
+    <script>
+    
+        function validacion(form) {
+            let nombre = document.getElementById("nombre").value.trim();
+            let primer_apellido = document.getElementById("primer_apellido").value.trim();
+            let segundo_apellido = document.getElementById("segundo_apellido").value.trim();
+            let telefono = document.getElementById("telefono").value.trim();
+            let email = document.getElementById("email").value.trim();
+
+            if (nombre.length < 3) {
+                alert("El nombre debe tener al menos 3 caracteres.");
+                return false;
+            }
+
+            if (primer_apellido.length < 4) {
+                alert("El primer apellido debe tener al menos 4 caracteres.");
+                return false;
+            }
+
+            if (segundo_apellido.length < 4) {
+                alert("El segundo apellido debe tener al menos 4 caracteres.");
+                return false;
+            }
+
+            if (telefono.length !== 9) {
+                alert("El teléfono debe tener 9 dígitos.");
+                return false;
+            }
+
+            if (!email.includes("@") || !email.includes(".")) {
+                alert("El email debe tener un formato válido.");
+                return false;
+            }
+
+            alert("Formulario enviado correctamente.");
+            return true;
+        }
+
+    </script>
+</body>
+
+</html>
